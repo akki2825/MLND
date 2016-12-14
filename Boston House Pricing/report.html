@@ -12059,7 +12059,7 @@ Assume that a dataset contains five data points and a model made the following p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong>Model has a coefficient of determination, R^2, of 0.923.</p>
+<p><strong>Answer:</strong>Model has a coefficient of determination, R^2, of 0.923. This means that the model explains 92.3% of the variance in the target variable. We have only 5 points here and its hard to draw any significant conclusion.</p>
 
 </div>
 </div>
@@ -14612,8 +14612,8 @@ AElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>When the model is trained with a maximum depth of 1, the model suffers from high bias. Since, there is a small gap between the training and testing scores.</p>
-<p>When the model is trained with a maximum depth of 10, the model suffers from high variance. Since, there is a large gap between the training and testing scores.</p>
+<p><strong>Answer: </strong>When the model is trained with a maximum depth of 1, the model suffers from high bias. Since, there is a small gap between the training and testing scores. Both training and testing scores are low.</p>
+<p>When the model is trained with a maximum depth of 10, the model suffers from high variance. Since, there is a large gap between the training and testing scores. Training score is high and Testing score is low.</p>
 
 </div>
 </div>
@@ -14688,6 +14688,9 @@ AElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>k-fold cross-validation training technique - The technique of splitting up the dataset to K "folds" of equal size. 
 If we do not use cross-validation set and run grid-search, the estimate of out-of-sample performance would have a high variance.</p>
+<p>We then iterate through the k chunks one by one and use the current chunk for model validation and the remaining k-1 chunks for training. What we end up with are k trained and evaluated models and we have used the entire dataset for validation. Averaging the validation scores gives us a single validation score.</p>
+<p>In the following model, the training and testing data are split into 80% and 20%. 10 iterations are carried out.</p>
+<p>Since we have larger validation set, the overfitting problem is mitigated.</p>
 
 </div>
 </div>
@@ -14819,7 +14822,7 @@ If we do not use cross-validation set and run grid-search, the estimate of out-o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>Parameter 'max_depth' is 4 for the optimal model.</p>
+<p><strong>Answer: </strong>Parameter 'max_depth' is 4 for the optimal model. The max_depth value is the same as my guess in question 6.</p>
 
 </div>
 </div>
@@ -14910,6 +14913,9 @@ Predicted selling price for Client 3&#39;s home: $938,053.85
 <p><strong>Answer: </strong>Predicted selling price for Client 1's home: $406,933.33</p>
 <p>Predicted selling price for Client 2's home: $232,200.00</p>
 <p>Predicted selling price for Client 3's home: $938,053.85</p>
+<p>For Client 1 - The selling price of 406,933 USD is a resonable estimate. The estimate is inside the range of prices. The estimate is less than both mean and median. It is also reasonable due to average poverty level and average student-teacher ratio.</p>
+<p>For Client 2 - The selling price of 232,200 USD is a resonable estimate. The estimate is inside the range of prices. The estimate is less than both mean and median. It is also reasonale due to high poverty ratio and high student-teacher ratio.</p>
+<p>For Client 3 - The selling price of 938053 USD is also a reasonable estimate. Though the estimate is way above mean and meadian values, it has high 'RM' value(more rooms) and low poverty level and low student-teacher ratio as well.</p>
 
 </div>
 </div>
