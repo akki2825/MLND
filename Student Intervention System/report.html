@@ -14106,21 +14106,21 @@ Compotational time for Logistic Regression is lesser than that of SVC's.</p>
 <p><strong>Answer: </strong>Logistic Regression</p>
 <p>Logistic Regression seeks to-</p>
 <ol>
-<li><p>model the probability of an event occuring depending on the values of the independent variables, which can be categorical or numeric.</p>
+<li><p>Model the probability of an event occuring depending on the values of the independent variables, which can be categorical or numeric.</p>
 </li>
-<li><p>estimate the probability that an event occurs for a randomly selected observation versus the probability that the event does not occur.</p>
+<li><p>Estimate the probability that an event occurs for a randomly selected observation versus the probability that the event does not occur.</p>
 </li>
-<li><p>predict the effect of a series of variables on a binary response variable</p>
+<li><p>Predict the effect of a series of variables on a binary response variable</p>
 </li>
-<li><p>classify observations by estimating the probability that an observation is in a particular category.</p>
+<li><p>Classify observations by estimating the probability that an observation is in a particular category.</p>
 </li>
 </ol>
 <p>Understanding the process -</p>
 <p>Our dataset is feeded to the model and when it comes out, it is either, students who need early intervention or students who dont need.</p>
 <p>Let us consider the given dataset, wherein, we have converted the target variable(say, Y) to binary(0 or 1). we want to model the conditional probability Pr(Y = 1|X = x) as a function of x; any unknown parameters in
 the function are to be estimated by maximum likelihood.</p>
-<p>Modification of log p which has an unbounded range is the logistic (or logit) transformation, log p/(1−p). We can make this a linear function of x without fear of nonsensical results.</p>
-<p>Formally, the model logistic regression model is that: log p(x)/(1 − p(x)) = β0 + x·β</p>
+<p>Modification of log p which has an unbounded range is the logistic (or logit) transformation, log p/(1−p).</p>
+<p>the model logistic regression model is: log p(x)/(1 − p(x)) = β0 + x·β</p>
 <p>Solving for p, this gives: p(x; b, w) = e^(β0+x·β)/(1 + e^(β0+x·β)) = 1/(1 + e^−(β0+x·β))</p>
 <p>To minimize the mis-classification rate, we should predict Y = 1 when p ≥ 0.5 and Y = 0 when p &lt; 0.5. This means guessing 1 whenever β0 + x ·β is non-negative, and 0 otherwise. So logistic regression gives us a linear classifier. The decision boundary separating the two predicted classes is the solution of β0 + x · β = 0,
 which is a point if x is one dimensional, a line if it is two dimensional, etc.</p>
