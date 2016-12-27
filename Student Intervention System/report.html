@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># Import libraries</span>
@@ -13340,7 +13340,7 @@ div#notebook {
 
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13372,7 +13372,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Calculate number of students</span>
@@ -13386,10 +13386,10 @@ div#notebook {
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate failing students</span>
-<span class="n">n_failed</span> <span class="o">=</span> <span class="n">failed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">n_failed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;no&quot;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate graduation rate</span>
-<span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="p">(</span><span class="n">n_passed</span><span class="o">+</span><span class="n">n_failed</span><span class="p">))</span>
+<span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n_passed</span><span class="o">+</span><span class="n">n_failed</span><span class="p">)</span>
 
 <span class="c1"># Print the results</span>
 <span class="k">print</span> <span class="s2">&quot;Total number of students: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
@@ -13436,7 +13436,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># Extract feature columns</span>
@@ -13518,7 +13518,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -13589,7 +13589,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -13601,7 +13601,7 @@ Feature values:
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span>
 
 <span class="c1"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">stratify</span> <span class="o">=</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># Show the results of the split</span>
 <span class="k">print</span> <span class="s2">&quot;Training set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span> <span class="s2">&quot;Testing set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -14116,15 +14116,14 @@ Compotational time for Logistic Regression is lesser than that of SVC's.</p>
 </li>
 </ol>
 <p>Understanding the process -</p>
-<p>Our dataset is feeded to the model and when it comes out, it is either, students who need early intervention or students who dont need.</p>
-<p>Let us consider the given dataset, wherein, we have converted the target variable(say, Y) to binary(0 or 1). we want to model the conditional probability Pr(Y = 1|X = x) as a function of x; any unknown parameters in
-the function are to be estimated by maximum likelihood.</p>
-<p>Modification of log p which has an unbounded range is the logistic (or logit) transformation, log p/(1−p).</p>
-<p>the model logistic regression model is: log p(x)/(1 − p(x)) = β0 + x·β</p>
-<p>Solving for p, this gives: p(x; b, w) = e^(β0+x·β)/(1 + e^(β0+x·β)) = 1/(1 + e^−(β0+x·β))</p>
-<p>To minimize the mis-classification rate, we should predict Y = 1 when p ≥ 0.5 and Y = 0 when p &lt; 0.5. This means guessing 1 whenever β0 + x ·β is non-negative, and 0 otherwise. So logistic regression gives us a linear classifier. The decision boundary separating the two predicted classes is the solution of β0 + x · β = 0,
-which is a point if x is one dimensional, a line if it is two dimensional, etc.</p>
-<p>Logistic regression not only says where the boundary between the classes is, but also says that the class probabilities depend on distance from the boundary, in a particular way, and that they go towards the extremes (0 and 1) more rapidly when |β| is larger.</p>
+<p>Logistic regression is a probabilistic, linear classifier.</p>
+<p>First, we need a dataset which contains the labels we are trying to predict. We then extract well-defined features. 
+We split the data to training and testing set and build our classification model (Logistic Regression) using the training set. Next, we test the model on the testing set and make predictions.</p>
+<p>Here we predict how likely it is that a given sample Xj which belongs to a certain class y. In this case j stands for one observation, w is the weights vector and Xj are the features for sample j.</p>
+<p>Logistic regression is nothing more than taking a linear combination of  w0X0 + w1X1 + w2X2 + …+ wnXn and transforming it so it can only be between 0 and 1(using sigmoid function).</p>
+<p>Certain features, might be more important for making a decision than other features and the weights vector reflects this by giving the that feature a higher weight.</p>
+<p>We then observe the output probability. If the value is less than or equal to some value, say 0.5, we predict that the target variable(which is in the binary form), say 1 and if more than 0.5, the value of target variable is 0.</p>
+<p>Logistic regression not only says where the boundary between the classes is, but also says that the class probabilities depend on distance from the boundary.</p>
 
 </div>
 </div>
