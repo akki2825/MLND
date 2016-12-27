@@ -13372,7 +13372,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Calculate number of students</span>
@@ -13382,11 +13382,10 @@ div#notebook {
 <span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
-<span class="n">passed</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;passed&quot;</span><span class="p">]</span>
-<span class="n">n_passed</span> <span class="o">=</span> <span class="n">passed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">n_passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate failing students</span>
-<span class="n">failed</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;passed&quot;</span><span class="p">]</span>
 <span class="n">n_failed</span> <span class="o">=</span> <span class="n">failed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># TODO: Calculate graduation rate</span>
@@ -13414,7 +13413,7 @@ div#notebook {
 Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
-Graduation rate of the class: 67.00%
+Graduation rate of the class: 67.09%
 </pre>
 </div>
 </div>
@@ -13590,7 +13589,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -14105,9 +14104,27 @@ Compotational time for Logistic Regression is lesser than that of SVC's.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>Logistic Regression</p>
-<p>Let us imagine a graph with scattered data points which contains two important features. Now draw a line which divides it into two areas. The closer the data point is to the line, the less confident you will be about the prediction. That is, we can be much more confident about our prediction if the data point is farther away from the line. 
-Drawing that line is what the model does, learning from the data. 
-The model checks on which side of the line are the data points located and how far is it from the line. Based on those, the model predicts makes the prediction.</p>
+<p>Logistic Regression seeks to-</p>
+<ol>
+<li><p>model the probability of an event occuring depending on the values of the independent variables, which can be categorical or numeric.</p>
+</li>
+<li><p>estimate the probability that an event occurs for a randomly selected observation versus the probability that the event does not occur.</p>
+</li>
+<li><p>predict the effect of a series of variables on a binary response variable</p>
+</li>
+<li><p>classify observations by estimating the probability that an observation is in a particular category.</p>
+</li>
+</ol>
+<p>Understanding the process -</p>
+<p>Our dataset is feeded to the model and when it comes out, it is either, students who need early intervention or students who dont need.</p>
+<p>Let us consider the given dataset, wherein, we have converted the target variable(say, Y) to binary(0 or 1). we want to model the conditional probability Pr(Y = 1|X = x) as a function of x; any unknown parameters in
+the function are to be estimated by maximum likelihood.</p>
+<p>Modification of log p which has an unbounded range is the logistic (or logit) transformation, log p/(1−p). We can make this a linear function of x without fear of nonsensical results.</p>
+<p>Formally, the model logistic regression model is that: log p(x)/(1 − p(x)) = β0 + x·β</p>
+<p>Solving for p, this gives: p(x; b, w) = e^(β0+x·β)/(1 + e^(β0+x·β)) = 1/(1 + e^−(β0+x·β))</p>
+<p>To minimize the mis-classification rate, we should predict Y = 1 when p ≥ 0.5 and Y = 0 when p &lt; 0.5. This means guessing 1 whenever β0 + x ·β is non-negative, and 0 otherwise. So logistic regression gives us a linear classifier. The decision boundary separating the two predicted classes is the solution of β0 + x · β = 0,
+which is a point if x is one dimensional, a line if it is two dimensional, etc.</p>
+<p>Logistic regression not only says where the boundary between the classes is, but also says that the class probabilities depend on distance from the boundary, in a particular way, and that they go towards the extremes (0 and 1) more rapidly when |β| is larger.</p>
 
 </div>
 </div>
@@ -14138,21 +14155,24 @@ The model checks on which side of the line are the data points located and how f
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span><span class="p">,</span> <span class="n">grid_search</span><span class="p">,</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">make_scorer</span>
 <span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
-
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
 
 <span class="c1"># TODO: Create the parameters list you wish to tune</span>
 <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+  <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
    <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]}</span>
  <span class="p">]</span>
 
+<span class="c1">#stratified shuffle split</span>
+
+<span class="n">sss</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -14183,10 +14203,10 @@ The model checks on which side of the line are the data points located and how f
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0002 seconds.
-Tuned model has a training F1 score of 0.8243.
+<pre>Made predictions in 0.0028 seconds.
+Tuned model has a training F1 score of 0.8323.
 Made predictions in 0.0002 seconds.
-Tuned model has a testing F1 score of 0.7808.
+Tuned model has a testing F1 score of 0.7943.
 </pre>
 </div>
 </div>
@@ -14210,8 +14230,9 @@ Tuned model has a testing F1 score of 0.7808.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>F1 score for training - 0.8243
-F1 score for testing - 0.7808</p>
+<p><strong>Answer: </strong></p>
+<p>F1 score for training is 0.8323</p>
+<p>F1 score for testing is 0.7943</p>
 <p>The scores are much better than untuned model. In fact, F1 score for testing is more than that of both models.</p>
 
 </div>
