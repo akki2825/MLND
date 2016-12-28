@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># Import libraries</span>
@@ -13340,7 +13340,7 @@ div#notebook {
 
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13372,7 +13372,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Calculate number of students</span>
@@ -13389,7 +13389,7 @@ div#notebook {
 <span class="n">n_failed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;no&quot;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate graduation rate</span>
-<span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n_passed</span><span class="o">+</span><span class="n">n_failed</span><span class="p">)</span>
+<span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="o">*</span><span class="mf">100.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n_passed</span><span class="o">+</span><span class="n">n_failed</span><span class="p">)</span>
 
 <span class="c1"># Print the results</span>
 <span class="k">print</span> <span class="s2">&quot;Total number of students: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
@@ -14104,26 +14104,33 @@ Compotational time for Logistic Regression is lesser than that of SVC's.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>Logistic Regression</p>
-<p>Logistic Regression seeks to-</p>
+<p>Let us consider the given dataset. We are to classify students who need intervention and those who don't.</p>
+<p>Logistic Regression makes prediction using probability:</p>
 <ol>
-<li><p>Model the probability of an event occuring depending on the values of the independent variables, which can be categorical or numeric.</p>
+<li><p>0 - we are absolutely sure that the student is going to graduate</p>
 </li>
-<li><p>Estimate the probability that an event occurs for a randomly selected observation versus the probability that the event does not occur.</p>
+<li><p>1 - we are absolutely sure that the student fails to graduate</p>
 </li>
-<li><p>Predict the effect of a series of variables on a binary response variable</p>
-</li>
-<li><p>Classify observations by estimating the probability that an observation is in a particular category.</p>
+<li><p>any value above 0.5, we are pretty sure that the student will graduate. Say we predict 0.7, then we are 70% sure that the student graduates. Same way, if the value is below 0.5, we are certain that the student fails to graduate.</p>
 </li>
 </ol>
-<p>Understanding the process -</p>
-<p>Logistic regression is a probabilistic, linear classifier.</p>
-<p>First, we need a dataset which contains the labels we are trying to predict. We then extract well-defined features. 
-We split the data to training and testing set and build our classification model (Logistic Regression) using the training set. Next, we test the model on the testing set and make predictions.</p>
-<p>Here we predict how likely it is that a given sample Xj which belongs to a certain class y. In this case j stands for one observation, w is the weights vector and Xj are the features for sample j.</p>
-<p>Logistic regression is nothing more than taking a linear combination of  w0X0 + w1X1 + w2X2 + …+ wnXn and transforming it so it can only be between 0 and 1(using sigmoid function).</p>
-<p>Certain features, might be more important for making a decision than other features and the weights vector reflects this by giving the that feature a higher weight.</p>
-<p>We then observe the output probability. If the value is less than or equal to some value, say 0.5, we predict that the target variable(which is in the binary form), say 1 and if more than 0.5, the value of target variable is 0.</p>
+<p>This prediction is done by developing a model using the training data.</p>
+<p>By looking at the attributes of these students, it identifies cues that have been idicative for failing to graduate in the past. We can look for these cues in future students to get our intervention system.</p>
+<p>Let's see how we develop the model:</p>
+<ol>
+<li><p>We assign weights to the features. Certain features might be more important for making a decision than others and the weights vector reflects this by giving the that feature a higher weight.</p>
+</li>
+<li><p>We take the new student's features and combine them with the corresponding weight and sum them up.</p>
+</li>
+<li><p>The summed up value is applied to a function called 'Sigmoid Function' . It spits out a number which lies between 0 and 1, which is nothing but the value of the probability.</p>
+</li>
+</ol>
 <p>Logistic regression not only says where the boundary between the classes is, but also says that the class probabilities depend on distance from the boundary.</p>
+<p>Logistic Regression seeks to-</p>
+<p>1.Model the probability of an event occuring depending on the values of the independent variables, which can be categorical or numeric.</p>
+<p>2.Estimate the probability that an event occurs for a randomly selected observation versus the probability that the event does not occur.</p>
+<p>3.Predict the effect of a series of variables on a binary response variable.</p>
+<p>4.Classify observations by estimating the probability that an observation is in a particular category.</p>
 
 </div>
 </div>
